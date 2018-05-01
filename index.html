@@ -9,6 +9,10 @@
       margin: 0;
     }
 
+    body.fullscreen button {
+      display: none;
+    }
+
     video {
       display: block;
       position: relative;
@@ -16,22 +20,40 @@
       width: auto;
       margin: auto;
     }
+
+    button {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      padding: 20px 30px;
+      transition: opacity 250ms, background-color 250ms, color 250ms, border-color 250ms;
+      border: 0.2px solid #d855f2;
+      color: #d855f2;
+      margin: auto;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
+  <button onclick="fullscreen()" id="button">Fullscreen</button>
+
   <video width="400" class="video" autoplay loop controls>
     <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
-  <button onclick="fullscreen()">Fullscreen</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
   <script>
     const fullscreen = () => {
       if (screenfull.enabled) {
-        screenfull.request();
+        screenfull.toggle();
       }
     }
+
+    screenfull.on('change', () => {
+      document.body.classList.toggle('fullscreen', screenfull.isFullscreen);
+    });
 
   </script>
 </body>
