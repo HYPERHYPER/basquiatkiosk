@@ -33,8 +33,7 @@
       transition: opacity 250ms, background-color 250ms, color 250ms, border-color 250ms;
       border: 0.1rem solid #d855f2;
       color: #d855f2;
-      margin: auto;
-      margin-bottom: 2rem;
+      margin: 2rem auto;
       font-size: 1rem;
     }
   </style>
@@ -50,9 +49,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
   <script>
     const fullscreen = () => {
-      console.log('before');
       if (screenfull.enabled) {
-        console.log('here');
         screenfull.toggle();
       } else {
         const videoPlayer = document.getElementById('video');
