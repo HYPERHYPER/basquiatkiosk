@@ -19,6 +19,7 @@
       display: block;
       position: relative;
       height: 100vh;
+      max-width: 100%;
       width: auto;
       margin: auto;
     }
@@ -41,7 +42,7 @@
 <body>
   <button onclick="fullscreen()" id="button">Fullscreen</button>
 
-  <video width="400" class="video" autoplay loop controls>
+  <video width="400" class="video" id="video" autoplay loop controls>
     <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
@@ -49,14 +50,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
   <script>
     const fullscreen = () => {
+      console.log('before');
       if (screenfull.enabled) {
+        console.log('here');
         screenfull.toggle();
+      } else {
+        const videoPlayer = document.getElementById('video');
+        videoPlayer.webkitEnterFullScreen();
       }
     }
 
-    screenfull.on('change', () => {
-      document.body.classList.toggle('fullscreen', screenfull.isFullscreen);
-    });
+    
+    if (screenfull.enabled) {
+      screenfull.on('change', () => {
+        document.body.classList.toggle('fullscreen', screenfull.isFullscreen);
+      });
+    }
 
   </script>
 </body>
