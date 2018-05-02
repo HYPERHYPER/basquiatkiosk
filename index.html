@@ -15,10 +15,13 @@
       display: none;
     }
 
+    .container {
+      position: relative;
+      padding-top: 1px;
+    }
+
     video {
       display: block;
-      position: relative;
-      height: 100vh;
       max-width: 100%;
       width: auto;
       margin: auto;
@@ -30,21 +33,51 @@
       display: flex;
       justify-content: center;
       padding: 1.2rem 2rem;
+      margin: 2rem auto;
       transition: opacity 250ms, background-color 250ms, color 250ms, border-color 250ms;
       border: 0.1rem solid #d855f2;
       color: #d855f2;
-      margin: 2rem auto;
       font-size: 1rem;
+      background: white;
     }
+
+    @media (min-width: 1024px) {
+
+      .container {
+        max-height: 100vh;
+        padding-top: 100vh;
+      }
+
+      video {
+        left: 0;
+        top: calc((100vh - 56.25vw)/2 + 56.25vw);
+        transform-origin: left top;
+        transform: rotateZ(-90deg);
+        position: absolute;
+        height: 100vw;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        z-index: 1;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <button onclick="fullscreen()" id="button">Fullscreen</button>
 
-  <video width="400" class="video" id="video" autoplay loop controls>
-    <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
+  <div class="container">
+    <button onclick="fullscreen()" id="button">Fullscreen</button>
+
+    <video width="400" class="video" id="video" autoplay loop controls>
+      <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
   <script>
