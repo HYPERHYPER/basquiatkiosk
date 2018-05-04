@@ -23,7 +23,8 @@
     video {
       display: block;
       max-width: 100%;
-      width: auto;
+      width: auto !important;
+      height: auto !important;
       margin: auto;
     }
 
@@ -54,7 +55,7 @@
         transform-origin: left top;
         transform: rotateZ(-90deg);
         position: absolute;
-        height: 100vw;
+        height: 100vw !important;
       }
 
       button {
@@ -73,13 +74,15 @@
   <div class="container">
     <button onclick="fullscreen()" id="button">Fullscreen</button>
 
-    <video width="400" class="video" id="video" loop autoplay>
+    <video width="400" class="video video-js" id="video" loop autoplay preload="auto">
       <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
+  <script src="http://vjs.zencdn.net/6.6.3/video.js"></script>
+
   <script>
 
     const videoPlayer = document.getElementById('video');
