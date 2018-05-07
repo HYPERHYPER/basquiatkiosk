@@ -45,16 +45,11 @@
 
       .container {
         max-height: 100vh;
-        padding-top: 100vh;
       }
 
       video {
-        left: 0;
-        top: calc((100vh - 56.25vw)/2 + 56.25vw);
-        transform-origin: left top;
-        transform: rotateZ(-90deg);
-        position: absolute;
-        height: 100vw;
+        height: 100vh;
+        width: auto;
       }
 
       button {
@@ -74,9 +69,10 @@
     <button onclick="fullscreen()" id="button">Fullscreen</button>
 
     <video width="400" class="video" id="video" loop autoplay>
-      <source src="https://player.vimeo.com/external/267461141.hd.mp4?s=db50294a5a913602507f090a18c45f9b36f95422&profile_id=174" type="video/mp4">
+      <source src="phillips-scroll-20180504-new.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
